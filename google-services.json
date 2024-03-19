@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "415080211700",
+    "project_id": "cuet-crack",
+    "storage_bucket": "cuet-crack.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:415080211700:android:97de26beb079d91cd02aa1",
+        "android_client_info": {
+          "package_name": "com.anshuvasist.cuet"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApcs1oHkmLfVizXkjfnyh5bUdeCZ83v5g"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

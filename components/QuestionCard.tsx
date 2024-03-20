@@ -36,10 +36,10 @@ const QuestionCard = () => {
       position.setValue(gestureState.dx);
     },
     onPanResponderRelease: (_, gestureState) => {
-      if (gestureState.dx > 150 && currentIndex > 0) {
+      if (gestureState.dx > 120 && currentIndex > 0) {
         setCurrentIndex(currentIndex - 1);
       } else if (
-        gestureState.dx < -150 &&
+        gestureState.dx < -120 &&
         currentIndex < dummyQuestions.length - 1
       ) {
         setCurrentIndex(currentIndex + 1);

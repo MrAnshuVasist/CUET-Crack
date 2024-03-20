@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useEffect, useState } from "react";
+import * as Font from "expo-font";
 import {
   View,
   Text,
@@ -21,6 +22,22 @@ const Module = ({ navigation }) => {
   const handleBackButtonPress = () => {
     navigation.goBack(); // Navigate back to the previous screen
   };
+  // font
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        AvenirRegular: require("../assets/font/AvenirLTStd-Black.otf"),
+
+      });
+      setFontsLoaded(true);
+    }
+    loadFonts();
+  }, []);
+
+
+
+
   return (
     <View style={styles.container}>
       <View style={styles.header}>
@@ -66,6 +83,7 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: '#fff',
+
   },
   header: {
     flexDirection: 'row',
@@ -88,12 +106,15 @@ const styles = StyleSheet.create({
     flexDirection: 'column',
     alignItems: 'center',
     padding: 10,
+    
   },
   subjectName: {
     fontSize: 20,
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 20,
+    fontFamily: "AvenirRegular",
+
   },
   searchContainer: {
     flexDirection: 'row',
@@ -130,6 +151,8 @@ const styles = StyleSheet.create({
     fontWeight: 'bold',
     color: 'black',
     marginBottom: 8,
+    fontFamily: "AvenirRegular",
+
   },
   touchableModule: {
     width: '100%', // Take the full width of the parent
@@ -138,6 +161,7 @@ const styles = StyleSheet.create({
     borderBottomWidth: 2,
     borderBottomColor: '#fea302',
     marginBottom: 8,
+
   },
 });
 

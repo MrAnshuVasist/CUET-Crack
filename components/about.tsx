@@ -1,61 +1,52 @@
-import { StatusBar } from "expo-status-bar";
-import React, { useEffect , useState} from "react";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity } from "react-native";
 import { useNavigation } from '@react-navigation/native';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase authentication functions
+import * as Font from "expo-font";
 
 export default function About({ navigation }) {
   const [loggedIn, setLoggedIn] = useState(false);
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
- 
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        AvenirRegular: require("../assets/font/AvenirLTStd-Black.otf"),
 
-  // Check if the user is logged in when the component mounts
+      });
+      setFontsLoaded(true);
+    }
+    loadFonts();
+  }, []);
+
   useEffect(() => {
     const auth = getAuth(); // Get Firebase Auth instance
 
     // Check the user's authentication state
     const unsubscribe = onAuthStateChanged(auth, (user) => {
-      if (user) {
-        // If the user is logged in, set the loggedIn state to true
-        setLoggedIn(true);
-      } else {
-        // If the user is not logged in, set the loggedIn state to false
-        setLoggedIn(false);
-      }
+      setLoggedIn(!!user);
     });
 
     // Cleanup function to unsubscribe from the listener
     return unsubscribe;
-  }, []); // Empty dependency array ensures this effect runs only once when the component mounts
+  }, []);
 
   const handleGetStarted = () => {
     if (loggedIn) {
-      // navigation.navigate('Module');
       navigation.navigate('Module');
-    }
-    else{
+    } else {
       navigation.navigate('Signup');
     }
-    // Define the action to be performed when the button is pressed
-    
   };
 
+
+
   return (
-    <SafeAreaView style={{ flex: 1 , marginTop:"3%"}}>
+    <SafeAreaView style={{ flex: 1, marginTop: "3%" }}>
       {/* Section one start from here */}
       <View style={styles.sectionOne}>
         <View style={styles.logoContainer}>
-          <Image
-            source={require("../assets/logo1.png")}
-            style={styles.logo}
-          />
+          <Image source={require("../assets/logo1.png")} style={styles.logo} />
         </View>
         <TouchableOpacity style={styles.loginButton} onPress={handleGetStarted}>
           <Text style={styles.loginButtonText}>Login</Text>
@@ -82,14 +73,6 @@ export default function About({ navigation }) {
   );
 }
 
-// Styles...
-
-
-
-// Styles...
-
-
-
 const styles = StyleSheet.create({
   sectionOne: {
     flexDirection: "row",
@@ -97,6 +80,8 @@ const styles = StyleSheet.create({
     alignItems: "center",
     backgroundColor: "transparent",
     height: "10%",
+    marginTop:30,
+
   },
   logoContainer: {
     width: "30%",
@@ -104,38 +89,39 @@ const styles = StyleSheet.create({
   logo: {
     width: 40,
     height: 40,
-    marginTop:"10%",
-    marginLeft:20,
+    marginTop: "10%",
+    marginLeft: 20,
   },
   loginButton: {
     backgroundColor: "transparent",
     borderWidth: 2,
     borderColor: "#FEA302",
     padding: 15,
-    paddingBottom:8,
-    paddingTop:8,
+    paddingBottom: 8,
+    paddingTop: 8,
     marginTop: "5%",
     borderRadius: 5,
     marginRight: 20,
+    fontFamily: "AvenirRegular",
   },
   loginButtonText: {
     color: "black",
     fontSize: 16,
-    fontWeight:"bold",
+    fontWeight: "bold",
+    fontFamily: "AvenirBold",
   },
   sectionTwo: {
     padding: 20,
     backgroundColor: "transparent",
-    display:"flex",
-    flexDirection:"column",
-    height:"70%",
-    alignItems:"center",
+    display: "flex",
+    flexDirection: "column",
+    fontFamily: "AvenirRegular",
   },
   heading: {
-    fontSize: 20,
+    fontSize: 24,
     fontWeight: "bold",
     margin: 40,
-    textAlign:"center",
+    textAlign: "center",
   },
   bullet: {
     fontSize: 16,
@@ -145,11 +131,9 @@ const styles = StyleSheet.create({
     fontSize: 18,
     fontWeight: "bold",
     marginTop: 20,
-    textAlign:"center",
-
+    textAlign: "center",
   },
   sectionThree: {
-    height: "20%",
     backgroundColor: "transparent",
     justifyContent: "center",
     alignItems: "center",
@@ -159,12 +143,14 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     borderColor: "black",
     padding: 15,
-    paddingBottom:8,
-    paddingTop:8,
+    paddingBottom: 8,
+    paddingTop: 8,
     borderRadius: 5,
   },
   trialButtonText: {
     color: "black",
     fontSize: 20,
+    fontWeight: "bold",
+    fontFamily: "AvenirBold",
   },
 });

@@ -1,19 +1,31 @@
+import React, { useEffect, useState } from "react";
+import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity } from "react-native";
+import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from "expo-status-bar";
-import {
-  StyleSheet,
-  Text,
-  View,
-  Image,
-  SafeAreaView,
-  TouchableOpacity,
-} from "react-native";
+import * as Font from "expo-font";
+
+
 
 export default function Home({ navigation }) {
   const handleGetStarted = () => {
     navigation.navigate('About');
   };
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+  // Font loading and registration
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        AvenirRegular: require("../assets/font/AvenirLTStd-Black.otf"),
+
+      });
+      setFontsLoaded(true);
+    }
+    loadFonts();
+  }, []);
+
   return (
-    <SafeAreaView style={styles.container}>
+    <SafeAreaView style={[styles.container, styles.fontAvenirRegular]}>
       <Text style={styles.header}>WELCOME TO</Text>
       <Image
         style={styles.logo}
@@ -53,7 +65,6 @@ export default function Home({ navigation }) {
             </Text>
           </View>
         </View>
-
         <View style={styles.logoRowTry}>
           <View>
             <Image
@@ -70,17 +81,14 @@ export default function Home({ navigation }) {
           </View>
         </View>
       </View>
-    
-      <View style={{display:'flex', flexDirection:'row', flexWrap:'wrap',justifyContent: 'space-around',}}>
-      <View style={styles.course}><Text style={styles.center}>Sociology</Text></View>
-      <View style={styles.course}><Text style={styles.center}>Psychology</Text></View>
-      <View style={styles.course}><Text style={styles.center}>Pol. Science</Text></View>
-      <View style={styles.course}><Text style={styles.center}>Others</Text></View>
+      <View style={{display:'flex', flexDirection:'row', flexWrap:'wrap',justifyContent: 'space-around'}}>
+        <View style={styles.course}><Text style={styles.center}>Sociology</Text></View>
+        <View style={styles.course}><Text style={styles.center}>Psychology</Text></View>
+        <View style={styles.course}><Text style={styles.center}>Pol. Science</Text></View>
+        <View style={styles.course}><Text style={styles.center}>Others</Text></View>
       </View>
       <TouchableOpacity onPress={handleGetStarted} style={styles.getStarted}>
-        <Text style={styles.getStartedText}>Get started <Image style={styles.icon}
-              source={require("../assets/favicon.png")}
-              resizeMode="contain" /></Text>
+        <Text style={styles.getStartedText}>Get started</Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -95,23 +103,16 @@ const styles = StyleSheet.create({
     justifyContent: "center",
   },
   header: {
-    fontSize: 24,
-    fontWeight: "bold",
+    fontSize: 22,
     marginBottom: 10,
+    letterSpacing:5,
   },
   logo: {
-    width: 200, // Adjust width and height as needed
+    width: 200,
     height: 100,
     marginBottom: 20,
   },
-  iconRow: {
-    display: "flex",
-    flexDirection: "row",
-    justifyContent: "space-between",
-  },
-
   logoRowTry: {
-    display: "flex",
     flexDirection: "row",
     paddingBottom: 10,
     marginBottom: 20,
@@ -130,24 +131,21 @@ const styles = StyleSheet.create({
     fontWeight: "bold",
   },
   iconSubText: {
-    fontSize: 16,
-    // marginLeft: , // Adjust as needed
+    fontSize: 14,
   },
-
-  course :{
+  course: {
     paddingBottom: 5,
     margin: 10,
     borderWidth: 2,
     borderColor: "#FEA302",
     borderRadius: 8,
-    width:120,
-    height:'auto',
-    display:"flex",
+    width: 120,
+    height: 'auto',
+    display: "flex",
   },
-  center :{
-    textAlign:'center',
-    marginTop:5,
-
+  center: {
+    textAlign: 'center',
+    marginTop: 5,
   },
   getStarted: {
     borderColor: "#000",
@@ -162,5 +160,8 @@ const styles = StyleSheet.create({
     color: "#000",
     textAlign: "center",
   },
-
+  // Font style
+  fontAvenirRegular: {
+    fontFamily: "AvenirRegular",
+  },
 });

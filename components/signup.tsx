@@ -1,14 +1,17 @@
-import React, { useState } from 'react';
+import React, { useEffect, useState } from "react";
 import { StyleSheet, Text, View, Image, SafeAreaView, TextInput, TouchableOpacity, Alert } from 'react-native';
 import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Import authentication functions from Firebase
  // Import the firebaseApp as a named export
 import { firebaseApp } from '../firebase/config';
 // Your component code...
+import * as Font from "expo-font";
+
 
 export default function Signup({ navigation }) {
   const [username, setUsername] = useState('');
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const [fontsLoaded, setFontsLoaded] = useState(false);
 
   const handleSignup = () => {
     const auth = getAuth(firebaseApp); // Initialize Firebase auth
@@ -25,6 +28,20 @@ export default function Signup({ navigation }) {
         Alert.alert('Error', error.message);
       });
   };
+
+
+  //font 
+
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        AvenirRegular: require("../assets/font/AvenirLTStd-Black.otf"),
+
+      });
+      setFontsLoaded(true);
+    }
+    loadFonts();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -77,6 +94,7 @@ const styles = StyleSheet.create({
     flex: 1,
     alignItems: 'center',
     marginTop:30,
+    fontFamily: "AvenirRegular",
   },
   section1: {
     height: 50,
@@ -96,12 +114,16 @@ const styles = StyleSheet.create({
     backgroundColor: "transparent",
     padding: 20,
     alignItems: 'center',
+    fontFamily: "AvenirRegular",
+
   },
   heading: {
     fontSize: 20,
     fontWeight: "bold",
     marginBottom: 20,
     textAlign: "center",
+    fontFamily: "AvenirRegular",
+
   },
   input: {
     width: '100%',
@@ -128,13 +150,20 @@ const styles = StyleSheet.create({
   },
   buttonText: {
     color: 'white',
-    fontSize: 16,
+    fontSize: 14,
     fontWeight: 'bold',
+    fontFamily: "AvenirRegular",
+
   },
   logintext: {
     marginBottom: "10%",
     color: "#fea302",
-    marginTop: "5%"
+    marginTop: "5%",
+    fontFamily: "AvenirRegular",
+    fontSize: 14,
+
+
+    
   },
   section3: {
     height: "30%",
@@ -142,5 +171,6 @@ const styles = StyleSheet.create({
     backgroundColor: "#FEA302",
     borderRadius: 20,
     margin: "2%",
+    fontFamily: "AvenirRegular",
   }
 });

@@ -14,51 +14,51 @@ const Stack = createStackNavigator();
 
 export default function App() {
   return (
-    <TryFetch/>
-    // <NavigationContainer>
-    //   <Stack.Navigator>
-    //     <Stack.Screen
-    //       name="Home"
-    //       component={Home}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //       name="About"
-    //       component={About}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //       name="Signup"
-    //       component={Signup}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //       name="Login"
-    //       component={Login}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //       name="Module"
-    //       component={Module}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //       name="QuestionsPage"
-    //       component={QuestionsPage}
-    //       options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //     name="Profile"
-    //     component={Profile}
-    //     options={{ headerShown: false }}
-    //     />
-    //     <Stack.Screen
-    //     name="CourseAccess"
-    //     component={CourseAccess}
-    //     options={{ headerShown: false }}
-    //     />
+    // <TryFetch/>
+    <NavigationContainer>
+      <Stack.Navigator>
+        <Stack.Screen
+          name="Home"
+          component={Home}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="About"
+          component={About}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Signup"
+          component={Signup}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Login"
+          component={Login}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="Module"
+          component={Module}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+          name="QuestionsPage"
+          component={QuestionsPage}
+          options={{ headerShown: false }}
+        />
+        <Stack.Screen
+        name="Profile"
+        component={Profile}
+        options={{ headerShown: false }}
+        />
+        <Stack.Screen
+        name="CourseAccess"
+        component={CourseAccess}
+        options={{ headerShown: false }}
+        />
                 
-    //   </Stack.Navigator>
-    // </NavigationContainer>
+      </Stack.Navigator>
+    </NavigationContainer>
   );
 }

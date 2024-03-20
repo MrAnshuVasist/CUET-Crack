@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import {
   StyleSheet,
   Text,
@@ -13,11 +13,17 @@ import { SafeAreaView } from "react-native-safe-area-context";
 import { useNavigation } from "@react-navigation/native";
 import { getAuth, signInWithEmailAndPassword } from "firebase/auth"; // Import Firebase authentication functions
 import { WebView } from "react-native-webview";
+import * as Font from "expo-font";
+
+
 
 const Login = () => {
   const navigation = useNavigation();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [fontsLoaded, setFontsLoaded] = useState(false);
+
+
 
   const handleLogin = () => {
     const auth = getAuth(); // Initialize Firebase Auth
@@ -25,13 +31,24 @@ const Login = () => {
     signInWithEmailAndPassword(auth, email, password)
       .then((userCredential) => {
         // Login successful
-        navigation.navigate("Module"); // Navigate to the Module screen
+        navigation.navigate('Module'); // Navigate to the Module screen
       })
       .catch((error) => {
         // Handle login errors
         Alert.alert("Error", "Invalid User Credentials");
       });
   };
+
+  useEffect(() => {
+    async function loadFonts() {
+      await Font.loadAsync({
+        AvenirRegular: require("../assets/font/AvenirLTStd-Black.otf"),
+
+      });
+      setFontsLoaded(true);
+    }
+    loadFonts();
+  }, []);
 
   return (
     <SafeAreaView style={styles.container}>
@@ -64,7 +81,7 @@ const Login = () => {
         </TouchableOpacity>
       </View>
       <View style={styles.section3}>
-        <Text style={{ width: "80%", textAlign: "center", fontSize: 20, marginTop:20, }}>
+        <Text style={{ width: "80%", textAlign: "center", fontSize: 16, marginTop:20, fontFamily: "AvenirRegular", }}>
           Learn about the course and learning methodology{" "}
         </Text>
 
@@ -93,11 +110,15 @@ const styles = StyleSheet.create({
     height:850,
     justifyContent: "center",
     alignItems: "center",
+    fontFamily: "AvenirRegular",
+
   },
   section1: {
     backgroundColor: "transparent",
     width: "100%",
     height: "10%",
+    fontFamily: "AvenirRegular",
+
   },
   logo: {
     width: 40,
@@ -116,6 +137,8 @@ const styles = StyleSheet.create({
     marginBottom: 20,
     marginTop: 20,
     textAlign: "center",
+    fontFamily: "AvenirRegular",
+
   },
   input: {
     width: "96%",
@@ -141,6 +164,8 @@ const styles = StyleSheet.create({
     color: "white",
     fontSize: 16,
     fontWeight: "bold",
+    fontFamily: "AvenirRegular",
+
   },
   section3: {
     flex: 1,
@@ -152,16 +177,24 @@ const styles = StyleSheet.create({
     borderRadius: 20,
     display: "flex",
     alignItems: "center",
+    fontFamily: "AvenirRegular",
+
 
   },
   textcenter: {
     textAlign: "center",
     margin: 5,
+    fontSize:14,
+    fontFamily: "AvenirRegular",
+
   },
   textcentersign: {
     textAlign: "center",
     margin: 5,
     color: "#fea302",
+    fontFamily: "AvenirRegular",
+    fontSize:14,
+
   },
   videobox: {
     backgroundColor: "transparent",

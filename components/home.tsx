@@ -3,8 +3,7 @@ import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity } from "r
 import { useNavigation } from '@react-navigation/native';
 import { StatusBar } from "expo-status-bar";
 import * as Font from "expo-font";
-
-
+import { AntDesign , MaterialCommunityIcons } from '@expo/vector-icons';
 
 export default function Home({ navigation }) {
   const handleGetStarted = () => {
@@ -35,11 +34,7 @@ export default function Home({ navigation }) {
       <View>
         <View style={styles.logoRowTry}>
           <View>
-            <Image
-              style={styles.icon}
-              source={require("../assets/favicon.png")}
-              resizeMode="contain"
-            />
+          <MaterialCommunityIcons name="lightbulb-on-outline" size={35} color="black" />
           </View>
           <View>
             <Text style={styles.iconText}>
@@ -52,11 +47,7 @@ export default function Home({ navigation }) {
         </View>
         <View style={styles.logoRowTry}>
           <View>
-            <Image
-              style={styles.icon}
-              source={require("../assets/favicon.png")}
-              resizeMode="contain"
-            />
+          <MaterialCommunityIcons name="lightbulb-on-outline" size={35} color="black" />
           </View>
           <View>
             <Text style={styles.iconText}>Flashcard Method of learning</Text>
@@ -67,11 +58,7 @@ export default function Home({ navigation }) {
         </View>
         <View style={styles.logoRowTry}>
           <View>
-            <Image
-              style={styles.icon}
-              source={require("../assets/favicon.png")}
-              resizeMode="contain"
-            />
+          <MaterialCommunityIcons name="lightbulb-on-outline" size={35} color="black" />
           </View>
           <View>
             <Text style={styles.iconText}>Full Syllabus covered</Text>
@@ -88,7 +75,7 @@ export default function Home({ navigation }) {
         <View style={styles.course}><Text style={styles.center}>Others</Text></View>
       </View>
       <TouchableOpacity onPress={handleGetStarted} style={styles.getStarted}>
-        <Text style={styles.getStartedText}>Get started</Text>
+        <Text style={styles.getStartedText}>Get started  <AntDesign name="rightcircleo" size={24} color="black" /> </Text>
       </TouchableOpacity>
       <StatusBar style="auto" />
     </SafeAreaView>
@@ -114,16 +101,19 @@ const styles = StyleSheet.create({
   },
   logoRowTry: {
     flexDirection: "row",
-    paddingBottom: 10,
+    paddingVertical: 10,
     marginBottom: 20,
     borderWidth: 2,
     borderColor: "#FEA302",
     borderRadius: 10,
+    paddingHorizontal:10,
   },
   icon: {
     width: 30,
     height: 30,
     margin: 10,
+    paddingHorizontal:10,
+
   },
   iconText: {
     fontSize: 16,

@@ -3,6 +3,9 @@ import { StyleSheet, Text, View, Image, SafeAreaView, TouchableOpacity } from "r
 import { useNavigation } from '@react-navigation/native';
 import { getAuth, onAuthStateChanged } from 'firebase/auth'; // Import Firebase authentication functions
 import * as Font from "expo-font";
+import { Octicons } from '@expo/vector-icons';
+
+
 
 export default function About({ navigation }) {
   const [loggedIn, setLoggedIn] = useState(false);
@@ -56,10 +59,10 @@ export default function About({ navigation }) {
       {/* Section two start from here */}
       <View style={styles.sectionTwo}>
         <Text style={styles.heading}>CUET CRACK Method</Text>
-        <Text style={styles.bullet}>• Rereading textbooks multiple times is not effective for learning</Text>
-        <Text style={styles.bullet}>• Our flashcard method focuses on effortful retrieval by answering questions without prompts</Text>
-        <Text style={styles.bullet}>• This is not a question bank. Questions are designed for logical understanding and cover full syllabus</Text>
-        <Text style={styles.bullet}>• Revising questions 3-5 times before exams helps reinforce learning</Text>
+        <Text style={styles.bullet}><Octicons name="dot-fill" size={16} color="black" /> Rereading textbooks multiple times is not effective for learning</Text>
+        <Text style={styles.bullet}><Octicons name="dot-fill" size={16} color="black" /> Our flashcard method focuses on effortful retrieval by answering questions without prompts</Text>
+        <Text style={styles.bullet}><Octicons name="dot-fill" size={16} color="black" /> This is not a question bank. Questions are designed for logical understanding and cover full syllabus</Text>
+        <Text style={styles.bullet}><Octicons name="dot-fill" size={16} color="black" /> Revising questions 3-5 times before exams helps reinforce learning</Text>
         <Text style={styles.goodLuck}>Good luck!</Text>
       </View>
 

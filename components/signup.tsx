@@ -5,6 +5,7 @@ import { getAuth, createUserWithEmailAndPassword } from "firebase/auth"; // Impo
 import { firebaseApp } from '../firebase/config';
 // Your component code...
 import * as Font from "expo-font";
+import { Link } from "@react-navigation/native";
 
 
 export default function Signup({ navigation }) {
@@ -84,7 +85,17 @@ export default function Signup({ navigation }) {
       <TouchableOpacity onPress={() => navigation.navigate('Login')}>
         <Text style={styles.logintext}>Have an Account? Login</Text>
       </TouchableOpacity>
-      <View style={styles.section3}></View>
+      <View style={styles.section3}>
+        <Text style={{textAlign:"center", fontSize: 18,    fontFamily: "AvenirRegular", marginTop:8, color: 'white', }}>COURSE DIRECTOR</Text>
+        <Image
+        src="../assets/splash.png"
+        style={styles.logo}
+        />
+        <Text style={{textAlign:"center", fontSize: 16, fontFamily: "AvenirRegular", marginTop:8, letterSpacing:2 }} >PRERIT RANA</Text>
+        <Text style={{textAlign:"center",}} >CEO of Agrasar</Text>
+        <Text style={{textAlign:"center",fontSize: 17,marginTop:8,}}  >"Has been mentoring and teaching students across india for the past 15 years."</Text>
+        <Text style={{textAlign:"center", color:"white",marginTop:10,fontSize: 17,}} >https://www.linkedin.com/in/preritrana/</Text>
+      </View>
     </SafeAreaView>
   );
 }

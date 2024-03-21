@@ -12,6 +12,9 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { getAuth, signOut ,onAuthStateChanged   } from 'firebase/auth';  // Import useNavigation hook
+import { FontAwesome,Ionicons } from '@expo/vector-icons';
+
+
 
 
 const Profile = ({navigation}) => {
@@ -75,7 +78,7 @@ const Profile = ({navigation}) => {
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity onPress={handleBackButtonPress} style={styles.backButton}>
-          <Text style={styles.backButtonText}>Back</Text>
+          <Text style={styles.backButtonText}><Ionicons name="arrow-back-circle" size={30} color="white" /></Text>
         </TouchableOpacity>
         <View style={styles.userInfo}>
           <Text style={styles.userName}>{username}</Text>

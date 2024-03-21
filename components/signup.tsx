@@ -111,6 +111,7 @@ const styles = StyleSheet.create({
     height: 50,
     width: "100%",
     backgroundColor: "transparent",
+
   },
   logo: {
     width: 40,

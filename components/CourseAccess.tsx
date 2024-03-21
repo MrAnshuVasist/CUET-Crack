@@ -8,6 +8,9 @@ import {
 } from "react-native";
 import React from "react";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { FontAwesome,Ionicons } from '@expo/vector-icons';
+
+
 
 export default function CourseAccess({ navigation }) {
   const coursePayment = ({navigation}) => {
@@ -21,7 +24,7 @@ export default function CourseAccess({ navigation }) {
       <View style={styles.header} >
         <TouchableOpacity style={styles.backButton}>
           <Text onPress={handleBackButtonPress} style={styles.backButtonText}>
-            Back
+          <Ionicons name="arrow-back-circle" size={30} color="black" />
           </Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.profileButton}>
@@ -29,7 +32,7 @@ export default function CourseAccess({ navigation }) {
             onPress={() => navigation.navigate("Profile")}
             style={styles.backButtonText}
           >
-            User
+       <FontAwesome name="user" size={24} color="black" />
           </Text>
         </TouchableOpacity>
       </View>

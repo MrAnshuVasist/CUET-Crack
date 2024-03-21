@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import * as Font from "expo-font";
+import { FontAwesome, Ionicons } from '@expo/vector-icons';
 import {
   View,
   Text,
@@ -42,10 +43,10 @@ const Module = ({ navigation }) => {
     <View style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity style={styles.backButton}>
-          <Text onPress={handleBackButtonPress} style={styles.backButtonText}>Back</Text>
+          <Text onPress={handleBackButtonPress} style={styles.backButtonText}><Ionicons name="arrow-back-circle" size={30} color="#fea302" /></Text>
         </TouchableOpacity>
         <TouchableOpacity style={styles.profileButton}>
-          <Text onPress={() => navigation.navigate("Profile")} style={styles.backButtonText}>User</Text>
+          <Text onPress={() => navigation.navigate("Profile")} style={styles.backButtonText}><FontAwesome name="user" size={24} color="#fea302" /></Text>
         </TouchableOpacity>
       </View>
       <View style={styles.heading}>

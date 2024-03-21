@@ -11,6 +11,8 @@ import {
 } from 'react-native';
 import { useNavigation } from '@react-navigation/native'; // Import useNavigation hook
 import QuestionCard from './QuestionCard'; // Import QuestionCard component
+import { FontAwesome,Ionicons } from '@expo/vector-icons';
+
 
 const QuestionsPage = () => {
   const navigation = useNavigation(); // Initialize useNavigation hook
@@ -70,10 +72,10 @@ const QuestionsPage = () => {
       <View style={styles.container}>
         <View style={styles.header}>
           <TouchableOpacity style={styles.backButton} onPress={handleBackButtonPress}>
-            <Text style={styles.backButtonText}>Back</Text>
+            <Text style={styles.backButtonText}><Ionicons name="arrow-back-circle" size={30} color="#fea302" /></Text>
           </TouchableOpacity>
           <TouchableOpacity onPress={() => navigation.navigate("Profile")} style={styles.profileButton}>
-            <Text style={styles.backButtonText}>User</Text>
+            <Text style={styles.backButtonText}><FontAwesome name="user" size={24} color="#fea302" /></Text>
           </TouchableOpacity>
         </View>
 
